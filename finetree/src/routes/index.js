@@ -7,6 +7,7 @@ import MyPageView from '../views/MyPageView';
 Vue.use(VueRouter);
 
 export const router = new VueRouter({
+    mode: 'history',
     routes: [
         {
             path : '/',

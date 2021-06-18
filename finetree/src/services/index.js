@@ -6,7 +6,7 @@ export default {
   },
 
   fetchItemList() {
-    return http.get(`news/1.json`);
+    return http.get(`jobs/1.json`);
   },
 
   fetchMyPageList() {

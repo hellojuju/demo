@@ -1,26 +1,29 @@
 <template>
-  <div>Home</div>
+  <div>
+    Home <br />
+    <div v-for="item in this.$store.state.news">{{ item.title }}</div>
+  </div>
 </template>
 
 <script>
-import { fetchNewsList } from "../api/index.js";
+import Service from "../services/index";
 
 export default {
   data() {
     return {
-      users: [],
     };
   },
   created() {
-    var vm = this;
-    fetchNewsList()
-      .then((response) => {
-        console.log(response);
-        vm.users = response.datal;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+
+    this.$store.dispatch('FETCH_NEWS');
+    // Service.fetchHomeList()
+    //   .then((response) => {
+    //     console.log(response);
+    //     this.users = response.data;
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   },
 };
 </script>

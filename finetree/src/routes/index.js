@@ -1,8 +1,10 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import HomeView from '../views/HomeView';
+import NewsView from '../views/NewsView';
 import ItemView from '../views/ItemView';
-import MyPageView from '../views/MyPageView';
+import AskView from '../views/AskView';
+import JobsView from '../views/JobsView';
+import UserView from '../views/UserView';
 
 Vue.use(VueRouter);
 
@@ -11,15 +13,32 @@ export const router = new VueRouter({
     routes: [
         {
             path : '/',
-            component : HomeView,
+            redirect : '/news',
+        },
+        {
+            path : '/news',
+            name : 'news',
+            component : NewsView, // news
         },
          {
-            path : '/item',
-            component : ItemView,
+            path : '/ask',
+            name : 'ask',
+            component : AskView,
         },
          {
-            path : '/mypage',
-            component : MyPageView,
+            path : '/jobs',
+            name : 'jobs',
+            component : JobsView,
+        },
+        {
+            path : '/user/:id',
+            name : 'user',
+            component : UserView,
+        },
+        {
+            path: '/item/:id',
+            name : 'item',
+            component: ItemView,
         },
     ]
 });

@@ -1,30 +1,36 @@
 <template>
-    <div class="header">
-        <router-link to="/">Home</router-link> |
-        <router-link to="/item">Item</router-link> |
-        <router-link to="/mypage">Mypage</router-link>
-    </div>
-  
+  <div class="header">
+    <img src="../assets/logo.svg" alt="logo" class="logo">
+    <router-link to="/">News</router-link> |
+    <router-link to="/ask">Ask</router-link> |
+    <router-link to="/jobs">Jobs</router-link>
+  </div>
 </template>
 
-<script>
-export default {
-
-}
-</script>
-
 <style scoped>
- .header {
-     color: white;
-     background-color: #42b883;
-     display : flex;
-     padding : 8px;
-  }
-
-  .header .router-link-exact-active {
-      color :#34595e;
-  }
-  .header a {
-      color : white;
-  }
+.header {
+  background-color: #42b883;
+  color: white;
+  padding: 8px 8px 8px 25px;
+  display: flex;
+  align-items: center;
+}
+.header a:visited {
+  color: white;
+}
+.header a:active {
+  color: #35495e;
+}
+.fixed {
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+}
+.logo {
+  width: 30px;
+  margin-right: 18px;
+}
+a {
+  margin: 0 5px;
+}
 </style>

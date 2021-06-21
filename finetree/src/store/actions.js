@@ -1,33 +1,54 @@
 import Service from "../services/index";
 
 export default {
-
-  FETCH_NEWS(context) {
-    Service.fetchHomeList()
+    FETCH_NEWS(context) {
+    Service.fetchNews()
       .then((response) => {
-        context.commit("SET_HOME", response.data);
+        context.commit("SET_NEWS", response.data);
         console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
   },
-  FETCH_ITEMS({ commit }) {
+  FETCH_ASK({ commit }) {
     // context가 commit 기능을 가지고 있어서 바로 {commit} 해도됨
-    Service.fetchItemList()
+    Service.fetchAsk()
       .then((response) => {
-        commit("SET_ITEM", response.data);
+        commit("SET_ASK", response.data);
         console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
   },
-  FETCH_MYPAGES({ commit }) {
+  FETCH_JOBS({ commit }) {
     // console.log("myPage context ----, ",context); // commit,dispatch,getters...
-    Service.fetchMyPageList()
+    Service.fetchJobs()
       .then(({ data }) => {
-        commit("SET_MYPAGE", data);
+        commit("SET_JOBS", data);
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+  FETCH_USER({ commit }, userName) {
+    if (userName) {
+      Service.fetchUser(userName)
+        .then(({ data }) => {
+          commit("SET_USER", data);
+          console.log(data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  },
+  FETCH_ITEM({ commit }, itemId) {
+    Service.fetchItem(itemId)
+      .then(({ data }) => {
+        commit("SET_ITEM", data);
         console.log(data);
       })
       .catch((error) => {

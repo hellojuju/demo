@@ -1,38 +1,69 @@
 <template>
   <div>
-    Items <br />
-    <p v-for="job in this.$store.state.items">
-        <a :href="job.url">
-            {{ job.title }}
-        </a>
-        <small>{{ job.time_ago }},  {{ job.domain }}</small>
-    </p>
-
+      <div>Item</div>
+    <section class="header-container">
+      <div class="user-container">
+        <div>
+          <i class="fas fa-user-circle"></i>
+        </div>
+        <div class="user-description">
+          <router-link :to="'/user/' + userName">{{ userName }}</router-link>
+          <div class="time">{{ userTimeAgo }}</div>
+        </div>
+      </div>
+      <h2>{{ userQuestion }}</h2>
+    </section>
+    <section>
+      <div v-html="userContent" class="content"></div>
+    </section>
   </div>
 </template>
 
 <script>
-import Service from "../services/index";
-
+import { mapGetters } from 'vuex';
 export default {
-  data() {
-    return {
-    };
-  },
   created() {
-      
-    this.$store.dispatch('FETCH_ITEMS');
-    // Service.fetchItemList()
-    //   .then((response) => {
-    //     console.log(response);
-    //     vm.items = response.data;
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+    const itemId = this.$route.params.id;
+    this.$store.dispatch('FETCH_ITEM', itemId);
   },
-};
+  computed: {
+    ...mapGetters(['fetchedItem']),
+    userName() {
+      return this.fetchedItem.user;
+    },
+    userTimeAgo() {
+      return this.fetchedItem.time_ago;
+    },
+    userQuestion() {
+      return this.fetchedItem.title;
+    },
+    userContent() {
+      return this.fetchedItem.content;
+    },
+  },
+}
 </script>
 
-<style>
+<style scoped>
+.user-container {
+  display: flex;
+  align-items: center;
+}
+.fa-user-circle {
+  font-size: 2.5rem;
+}
+.user-description {
+  padding-left: 8px;
+}
+.time {
+  font-size: 0.7rem;
+}
+h3 {
+  margin-bottom: 0.5rem;
+  margin-left: 0.2rem;
+}
+.content {
+  border: ridge;
+  padding: 0.5rem;
+}
 </style>

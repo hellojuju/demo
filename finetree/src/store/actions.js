@@ -6,6 +6,7 @@ export default {
       .then((response) => {
         context.commit("SET_NEWS", response.data);
         console.log(response.data);
+        return response;
       })
       .catch((error) => {
         console.log(error);

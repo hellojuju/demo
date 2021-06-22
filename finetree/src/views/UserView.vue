@@ -1,7 +1,11 @@
 <template>
   <div>
     <div>User</div>
-    <user-profile></user-profile>
+    <user-profile :info="userInfo">
+      <div slot="username">{{ userInfo.id }}</div>
+      <template slot="time">{{ 'Joined ' +userInfo.created }}</template>
+      <div slot="karma">{{ userInfo.karma }}</div>
+    </user-profile>
   </div>
 </template>
 
@@ -9,19 +13,17 @@
 import UserProfile from "../components/UserProfile.vue";
 
 export default {
-  name: UserView,
   components: {
     UserProfile,
   },
-//   computed: {
-//     userInfo() {
-//       // 축약
-//       return this.$store.state.user;
-//     },
-//   },
+  computed: {
+    userInfo() {
+      return this.$store.state.user;
+    },
+  },
   created() {
-    // const userName = this.$route.params.id;
-    // this.$store.dispatch("FETCH_USER", userName);
+    const userName = this.$route.params.id;
+    this.$store.dispatch("FETCH_USER", userName);
   },
   data() {
     return {};

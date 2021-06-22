@@ -13,6 +13,9 @@ export default {
   components: {
     ItemList,
   },
+  created(){
+    this.$store.dispatch('FETCH_ASK');
+  }
 };
 </script>
 

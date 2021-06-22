@@ -4,29 +4,43 @@
       <i class="fas fa-user"></i>
     </div>
     <div class="user-description">
-      <!-- <router-link :to="'/user/' + userName">{{ userName }}</router-link> -->
       <!-- <div class="time">{{ userTimeAgo }}</div> -->
+      <slot name="username">
+          <!-- 상위컴포넌트에서 정의할 영역-->
+      </slot>
+      <div class="time">
+        <slot name="time">
+            <!-- 상위컴포넌트에서 정의할 영역-->
+        </slot>
+      </div>
+      <slot name="karma">
+          <!-- 상위컴포넌트에서 정의할 영역-->
+      </slot>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+    props:{
+        info: Object
+    },
+};
 </script>
 
 <style scoped>
-.user-container{
-    display: flex;
-    align-items: center;
-    padding: 0.5rem;
+.user-container {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
 }
-.fa-user{
-    font-size: 2.5rem;
+.fa-user {
+  font-size: 2.5rem;
 }
-.user-description{
-    padding-left: 8px;
+.user-description {
+  padding-left: 8px;
 }
-.item{
-    font-size: 0.7rem;
+.item {
+  font-size: 0.7rem;
 }
 </style>

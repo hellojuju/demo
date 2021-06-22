@@ -1,18 +1,30 @@
 <template>
   <div>
     <div>News</div>
-  <item-list></item-list>
+  <list-item></list-item>
   </div>
 </template>
 
 <script>
-import ItemList from '../components/ListItem.vue';
+import ListItem from '../components/ListItem.vue';
+import bus from '../utils/bus.js';
 
 export default {
   name: 'NewsView',
   components: {
-    ItemList,
+    ListItem,
   },
+  created(){
+    bus.$emit('start:spinner');
+    this.$store.dispatch('FETCH_NEWS')
+    .then( response => {
+      console.log('fetched');
+      bus.$emit('end:spinner');
+    }).catch(error =>{
+      console.log(error);
+    });
+    bus.$emit('end:spinner');
+  }
 };
 </script>
 

@@ -1,18 +1,21 @@
 <template>
   <div>
     <div>Job</div>
-  <item-list></item-list>
+  <list-item></list-item>
   </div>
 </template>
 
 <script>
-import ItemList from '../components/ListItem.vue';
+import ListItem from '../components/ListItem.vue';
 
 export default {
   name: 'JobsView',
   components: {
-    ItemList,
+    ListItem,
   },
+  created(){
+    this.$store.dispatch('FETCH_JOBS');
+  }
 };
 </script>
 

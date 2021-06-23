@@ -13,8 +13,13 @@ export default {
     return http.get(`jobs/1.json`);
   },
 
-  fetchUser(id) {
-    return http.get(`user/${id}.json`);
+  // HOC
+  fetchList(pageName) {
+    return http.get(`${pageName}/1.json`);
+  },
+
+  fetchUser(username) {
+    return http.get(`user/${username}.json`);
   },
 
   fetchItem(id) {

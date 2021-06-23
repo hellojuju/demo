@@ -1,7 +1,7 @@
 <template>
   <div class="user-container">
     <div>
-      <i class="fas fa-user"></i>
+     <i class="fas fa-user-circle"></i>
     </div>
     <div class="user-description">
       <!-- <div class="time">{{ userTimeAgo }}</div> -->

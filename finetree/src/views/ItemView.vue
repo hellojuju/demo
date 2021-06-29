@@ -24,7 +24,7 @@ import { mapGetters } from "vuex";
 import UserProfile from "../components/UserProfile.vue";
 export default {
   components: { UserProfile },
-  computed: {
+  computed: { 
     ...mapGetters(["fetchedItem"]),
   },
   created() {

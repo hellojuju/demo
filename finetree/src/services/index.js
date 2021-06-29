@@ -1,6 +1,7 @@
 import http from "@/api/http";
 
 export default {
+    
   fetchNews() {
     return http.get(`news/1.json`);
   },
